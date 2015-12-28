@@ -1,0 +1,35 @@
+<mvc:View
+  controllerName="rsh.view.SplitApp"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true">
+	<SplitApp id="app" initialDetail="idInitial" initialMaster="idMaster" orientationChange="onOrientationChange">
+		<masterPages>
+			<Page id="idMaster" title="{i18n>masterPage}">
+				<List mode="SingleSelectMaster" select=".itemSelected" items="{path: 'persons>/'}">
+  				<headerToolbar>
+            <Toolbar>
+              <Title text = "{i18n>personListTitle}"/>
+              <ToolbarSpacer />
+              <SearchField width="50%" search="onFilterPersions" />
+            </Toolbar>
+          </headerToolbar>
+          <items>
+            <StandardListItem title       = "{persons>lastName}, {persons>firstName}"
+                              description = "{path: 'persons>status', formatter: '.formatter.statusText'}" 
+                              type = "Navigation"/>
+          </items>
+				</List>
+			</Page>
+		</masterPages>
+			<detailPages>
+  			<mvc:JSView id="idInitial" viewName="rsh.view.Main" />
+  			<Page id="idDetail" title="{i18n>detailPageTitle}" >
+  			  <content>
+                  <Label text="Inro ... {persons>lastName}, {persons>firstName}"  />
+  			  </content>
+        </Page>
+		</detailPages>
+	</SplitApp>
+
+</mvc:View>

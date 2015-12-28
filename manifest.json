@@ -1,0 +1,60 @@
+{
+  "_version": "0.0.1",
+  "sap.app": {
+    "_version": "0.0.1",
+    "id": "rsh",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "ach": "CA-UI5-DOC",
+    "dataSources" : {
+      "invoiceRemote" : {
+        "uri" : "http://xyz/destinations/northwind/V3/Northwind/Northwind.svc/",
+        "type" : "OData",
+        "settings" : {
+          "odataVersion" : "2.0"
+        }
+      } 
+    } 
+    },
+    "sap.ui": {
+    "_version": "0.0.1",
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    },
+    "supportedThemes": [
+      "sap_bluecrystal"
+    ]
+    },
+    "sap.ui5": {
+    "_version": "0.0.1",
+    "rootView": "rsh.view.SplitApp",
+    "dependencies": {
+      "minUI5Version": "1.30",
+      "libs": {
+      "sap.m": {}
+      }
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "rsh.i18n.i18n"
+        }
+      },
+      "invoice" : "invoiceRemote"
+    },
+    "resources"	: {
+      "css" : [
+          { "uri" : "css/style.css" }
+        ]
+    }
+  }
+}

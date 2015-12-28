@@ -1,0 +1,7 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+          controllerName="rsh.view.Detail">
+    <Page title="{i18n>detailPageTitle}" >
+        <ObjectHeader intro="Inro ... {persons>lastName}, {persons>firstName}" 
+                      title="Title ...{persons>firstName}" />
+    </Page>
+</mvc:View>
