@@ -12,7 +12,7 @@ sap.ui.define([], function() {
                 case 'none':      return resourceBundle.getText("requestStatus-None"); break;
                 case 'granted':   return resourceBundle.getText("requestStatus-Granted"); break;
                 default:
-                  console.log("status not found" + status)
+                  console.log("status not found " + status)
                     return status
             }
         }

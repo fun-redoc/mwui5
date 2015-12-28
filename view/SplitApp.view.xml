@@ -1,7 +1,9 @@
 <mvc:View
   controllerName="rsh.view.SplitApp"
 	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
 	displayBlock="true">
 	<SplitApp id="app" initialDetail="idInitial" initialMaster="idMaster" orientationChange="onOrientationChange">
 		<masterPages>
@@ -23,10 +25,30 @@
 			</Page>
 		</masterPages>
 			<detailPages>
-  			<mvc:JSView id="idInitial" viewName="rsh.view.Main" />
+  			<Page id="idInitial" title="{i18n>initialPageTitle}" />
   			<Page id="idDetail" title="{i18n>detailPageTitle}" >
+  			  <footer>
+      			<Bar>
+      				<contentRight>
+      					<Button id="idNew"    text="{i18n>newButtonText}"    visible="false" press="onNewPress" />
+      					<Button id="idSave"   text="{i18n>saveButtonText}"   visible="false"  press="onSavePress" type="Emphasized"/>
+      					<Button id="idExtend" text="{i18n>extendButtonText}" visible="false"  press="onExtendPress" />
+      					<Button id="idCancel" text="{i18n>cancelButtonText}" visible="false"  press="onCancelPress" />
+      				</contentRight>
+      			</Bar>
+      		</footer>
   			  <content>
-                  <Label text="Inro ... {persons>lastName}, {persons>firstName}"  />
+  			    	<l:Grid
+            	  visible="true"
+            		defaultSpan="L12 M12 S12"
+            		hSpacing="2"
+            		width="auto">
+            		<l:content>
+                   <core:Fragment fragmentName="rsh.view.Person" type="XML" />
+                   <core:Fragment fragmentName="rsh.view.Request" type="XML"/>
+                   <core:Fragment fragmentName="rsh.view.RequestOptions" type="XML" />
+                </l:content>
+              </l:Grid>
   			  </content>
         </Page>
 		</detailPages>

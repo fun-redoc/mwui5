@@ -32,10 +32,15 @@ F.MONAD = function(modifier) {
         if(!monad.bind) {
             monad.bind = function (func, args) {
                 
-                return func.apply(
-                    undefined,
-                    [value].concat(Array.prototype.slice.call(arguments, 1) || [])
-                );
+                var res = func.apply(
+                            undefined,
+                            [value].concat(Array.prototype.slice.call(arguments, 1) || []))
+                // allow binding/composition also with funtions that dont return a result
+                if( res === null || res === undefined ) {
+                    return monad
+                } else {
+                    return unit(res)
+                }
             };
         }
         if (typeof modifier === 'function') {
@@ -91,11 +96,15 @@ F.Maybe = F.MONAD(function (monad, value) {
         monad.obind = function () {
             return monad
         }
+        // does not belong to the monad but comes handy
+        monad.onNothing = function(func,args) {
+           func.apply(undefined,Array.prototype.slice.call(arguments, 1) || [])
+           return monad
+        }
     } else {
         // obind helps to bind member functions
         // obind does not fulfill the monad rules!
         monad.obind = function(func,args) {
-            
             if( value === null || value === undefined ){
                 return monad
             }
@@ -114,6 +123,9 @@ F.Maybe = F.MONAD(function (monad, value) {
             } else {
                 return F.Maybe(res)
             }
+        }
+        monad.onNothing = function(func,args) {
+            return monad
         }
     }
     return value;
