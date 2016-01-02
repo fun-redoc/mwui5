@@ -1,0 +1,394 @@
+{
+  "d" : {
+    "results" : [
+      {
+        "__metadata" : {
+          "id" : "http://ipe.wob.vw.vwg:5000/sap/opu/odata/VWK/009_MSS_MOBILE_WORK_APP/EmployeeCollection('00986883')",
+          "uri" : "http://ipe.wob.vw.vwg:5000/sap/opu/odata/VWK/009_MSS_MOBILE_WORK_APP/EmployeeCollection('00986883')",
+          "type" : "009_MSS_MOBILE_WORK_APP.Employee"
+        },
+        "mobileWork" : {
+          "__metadata" : {
+            "type" : "009_MSS_MOBILE_WORK_APP.MobileWork"
+          },
+          "beginDate" : "\/Date(1450915200000)\/",
+          "endDate" : "\/Date(1464048000000)\/",
+          "workHoursPerWeek" : "15.50",
+          "status" : "requested",
+          "options" : {
+            "__metadata" : {
+              "type" : "009_MSS_MOBILE_WORK_APP.MobileWorkOptions"
+            },
+            "text" : "",
+            "agreementWorkdays" : {
+              "__metadata" : {
+                "type" : "009_MSS_MOBILE_WORK_APP.Week"
+              },
+              "day1" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 0,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              },
+              "day2" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 0,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              },
+              "day3" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 0,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              },
+              "day4" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 0,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              },
+              "day5" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 0,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              },
+              "day6" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 0,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              },
+              "day7" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 0,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              }
+            }
+          }
+        },
+        "pernr" : "00986883",
+        "beginDate" : "\/Date(1450915200000)\/",
+        "endDate" : "\/Date(1482537600000)\/",
+        "maxWorkhoursPerWeek" : "35.00",
+        "workDaysPerWeek" : "5.00",
+        "sortableName" : "Atom, Bombe",
+        "completeName" : "Atom, Bombe"
+      },
+      {
+        "__metadata" : {
+          "id" : "http://ipe.wob.vw.vwg:5000/sap/opu/odata/VWK/009_MSS_MOBILE_WORK_APP/EmployeeCollection('00986884')",
+          "uri" : "http://ipe.wob.vw.vwg:5000/sap/opu/odata/VWK/009_MSS_MOBILE_WORK_APP/EmployeeCollection('00986884')",
+          "type" : "009_MSS_MOBILE_WORK_APP.Employee"
+        },
+        "mobileWork" : {
+          "__metadata" : {
+            "type" : "009_MSS_MOBILE_WORK_APP.MobileWork"
+          },
+          "beginDate" : "\/Date(1450915200000)\/",
+          "endDate" : "\/Date(1464048000000)\/",
+          "workHoursPerWeek" : "15.50",
+          "status" : "requested",
+          "options" : {
+            "__metadata" : {
+              "type" : "009_MSS_MOBILE_WORK_APP.MobileWorkOptions"
+            },
+            "text" : "optionale VEreinbarung",
+            "agreementWorkdays" : {
+              "__metadata" : {
+                "type" : "009_MSS_MOBILE_WORK_APP.Week"
+              },
+              "day1" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 0,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              },
+              "day2" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 0,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              },
+              "day3" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 0,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              },
+              "day4" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 0,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              },
+              "day5" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 0,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              },
+              "day6" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 0,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              },
+              "day7" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 0,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              }
+            }
+          }
+        },
+        "pernr" : "00986884",
+        "beginDate" : "\/Date(1450915200000)\/",
+        "endDate" : "\/Date(1482537600000)\/",
+        "maxWorkhoursPerWeek" : "40.00",
+        "workDaysPerWeek" : "5.00",
+        "sortableName" : "Boss, Hugo",
+        "completeName" : "Boss, Hugo"
+      },
+      {
+        "__metadata" : {
+          "id" : "http://ipe.wob.vw.vwg:5000/sap/opu/odata/VWK/009_MSS_MOBILE_WORK_APP/EmployeeCollection('00986885')",
+          "uri" : "http://ipe.wob.vw.vwg:5000/sap/opu/odata/VWK/009_MSS_MOBILE_WORK_APP/EmployeeCollection('00986885')",
+          "type" : "009_MSS_MOBILE_WORK_APP.Employee"
+        },
+        "mobileWork" : {
+          "__metadata" : {
+            "type" : "009_MSS_MOBILE_WORK_APP.MobileWork"
+          },
+          "beginDate" : "\/Date(1450915200000)\/",
+          "endDate" : "\/Date(1464048000000)\/",
+          "workHoursPerWeek" : "15.50",
+          "status" : "requested",
+          "options" : {
+            "__metadata" : {
+              "type" : "009_MSS_MOBILE_WORK_APP.MobileWorkOptions"
+            },
+            "text" : "optionale VEreinbarung",
+            "agreementWorkdays" : {
+              "__metadata" : {
+                "type" : "009_MSS_MOBILE_WORK_APP.Week"
+              },
+              "day1" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "X",
+                "dayNumber" : 1,
+                "completeDay" : "",
+                "deviantHours" : "3.50"
+              },
+              "day2" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "X",
+                "dayNumber" : 2,
+                "completeDay" : "X",
+                "deviantHours" : "0.00"
+              },
+              "day3" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 3,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              },
+              "day4" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "X",
+                "dayNumber" : 4,
+                "completeDay" : "X",
+                "deviantHours" : "0.00"
+              },
+              "day5" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 5,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              },
+              "day6" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 6,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              },
+              "day7" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 7,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              }
+            }
+          }
+        },
+        "pernr" : "00986885",
+        "beginDate" : "\/Date(1450915200000)\/",
+        "endDate" : "\/Date(1482537600000)\/",
+        "maxWorkhoursPerWeek" : "37.25",
+        "workDaysPerWeek" : "5.00",
+        "sortableName" : "Clinton, Hilary",
+        "completeName" : "Clinton, Hilary"
+      },
+      {
+        "__metadata" : {
+          "id" : "http://ipe.wob.vw.vwg:5000/sap/opu/odata/VWK/009_MSS_MOBILE_WORK_APP/EmployeeCollection('00986886')",
+          "uri" : "http://ipe.wob.vw.vwg:5000/sap/opu/odata/VWK/009_MSS_MOBILE_WORK_APP/EmployeeCollection('00986886')",
+          "type" : "009_MSS_MOBILE_WORK_APP.Employee"
+        },
+        "mobileWork" : {
+          "__metadata" : {
+            "type" : "009_MSS_MOBILE_WORK_APP.MobileWork"
+          },
+          "beginDate" : null,
+          "endDate" : null,
+          "workHoursPerWeek" : "0.00",
+          "status" : "",
+          "options" : {
+            "__metadata" : {
+              "type" : "009_MSS_MOBILE_WORK_APP.MobileWorkOptions"
+            },
+            "text" : "",
+            "agreementWorkdays" : {
+              "__metadata" : {
+                "type" : "009_MSS_MOBILE_WORK_APP.Week"
+              },
+              "day1" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 0,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              },
+              "day2" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 0,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              },
+              "day3" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 0,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              },
+              "day4" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 0,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              },
+              "day5" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 0,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              },
+              "day6" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 0,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              },
+              "day7" : {
+                "__metadata" : {
+                  "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
+                },
+                "available" : "",
+                "dayNumber" : 0,
+                "completeDay" : "",
+                "deviantHours" : "0.00"
+              }
+            }
+          }
+        },
+        "pernr" : "00986886",
+        "beginDate" : "\/Date(1450915200000)\/",
+        "endDate" : "\/Date(1482537600000)\/",
+        "maxWorkhoursPerWeek" : "37.25",
+        "workDaysPerWeek" : "5.00",
+        "sortableName" : "No, Mobile-Work",
+        "completeName" : "No, Mobile-Work"
+      }
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<f:Form id="idFormRequestEdit"
+	      visible = "false"
+				minWidth="1024"
+				maxContainerCols="2"
+				editable="true">
+				<f:title>
+					<core:Title text="{i18n>requestBasics}" />
+				</f:title>
+				<f:layout>
+					<f:ResponsiveGridLayout
+						labelSpanL="3"
+						labelSpanM="3"
+						emptySpanL="4"
+						emptySpanM="4"
+						columnsL="1"
+						columnsM="1" />
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement label="{i18n>beginDate}">
+								<f:fields>
+									<DatePicker id="idBeginDate"
+															value="{path:'persons>mobileWork/beginDate', 
+																			type:'sap.ui.model.type.Date', 
+																			formatOptions: { style: 'medium', strictParsing: true}}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="{i18n>endDate}">
+								<f:fields>
+									<DatePicker id="idEndDate"
+															value="{path:'persons>mobileWork/endDate', 
+																			type:'sap.ui.model.type.Date', 
+																			formatOptions: { style: 'medium', strictParsing: true}}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="{i18n>workHoursPerWeek}">
+								<f:fields>
+									<Input id="idWorkHoursPerWeek" value="{persons>mobileWork/workHoursPerWeek}"/>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+	<f:Form id="idFormRequest"
+			  visible="false"
+				minWidth="1024"
+				maxContainerCols="2"
+				editable="false"
+				class="isReadonly">
+				<f:title>
+					<core:Title text="{i18n>requestBasics}" />
+				</f:title>
+				<f:layout>
+					<f:ResponsiveGridLayout
+						labelSpanL="3"
+						labelSpanM="3"
+						emptySpanL="4"
+						emptySpanM="4"
+						columnsL="1"
+						columnsM="1" />
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement label="{i18n>requestStatus}">
+								<f:fields>
+									<Text text="{path: 'persons>mobileWork/status', formatter: '.formatter.statusText'}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="{i18n>beginDate}">
+								<f:fields>
+									<Text text="{persons>mobileWork/beginDate}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="{i18n>endDate}">
+								<f:fields>
+									<Text text="{persons>mobileWork/endDate}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="{i18n>workHoursPerWeek}">
+								<f:fields>
+									<Text text="{persons>mobileWork/workHoursPerWeek}" />
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+	</f:Form>
+</core:FragmentDefinition>

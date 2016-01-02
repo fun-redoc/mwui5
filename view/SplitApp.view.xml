@@ -8,7 +8,7 @@
 	<SplitApp id="app" initialDetail="idInitial" initialMaster="idMaster" orientationChange="onOrientationChange">
 		<masterPages>
 			<Page id="idMaster" title="{i18n>masterPage}">
-				<List mode="SingleSelectMaster" select=".itemSelected" items="{path: 'persons>/'}">
+				<List mode="SingleSelectMaster" select=".itemSelected" items="{path: 'persons>/EmployeeCollection'}">
   				<headerToolbar>
             <Toolbar>
               <Title text = "{i18n>personListTitle}"/>
@@ -17,8 +17,8 @@
             </Toolbar>
           </headerToolbar>
           <items>
-            <StandardListItem title       = "{persons>lastName}, {persons>firstName}"
-                              description = "{path: 'persons>status', formatter: '.formatter.statusText'}" 
+            <StandardListItem title       = "{persons>sortableName}"
+                              description = "{path: 'persons>mobileWork/status', formatter: '.formatter.statusText'}" 
                               type = "Navigation"/>
           </items>
 				</List>

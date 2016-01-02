@@ -1,27 +1,51 @@
-<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
-	<script/>
-	<edmx:DataServices m:DataServiceVersion="1.0" m:MaxDataServiceVersion="3.0"
-					   xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
-		<Schema Namespace="NorthwindModel" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-			<EntityType Name="Invoice">
-				<Key>
-					<PropertyRef Name="ProductName"/>
-					<PropertyRef Name="Quantity"/>
-					<PropertyRef Name="ShipperName"/>
-				</Key>
-				<Property Name="ShipperName" Type="Edm.String" Nullable="false" MaxLength="40" FixedLength="false"
-						  Unicode="true"/>
-				<Property Name="ProductName" Type="Edm.String" Nullable="false" MaxLength="40" FixedLength="false"
-						  Unicode="true"/>
-				<Property Name="Quantity" Type="Edm.Int16" Nullable="false"/>
-				<Property Name="ExtendedPrice" Type="Edm.Decimal" Precision="19" Scale="4"/>
-			</EntityType>
-		</Schema>
-		<Schema Namespace="ODataWebV3.Northwind.Model" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-			<EntityContainer Name="NorthwindEntities" m:IsDefaultEntityContainer="true" p6:LazyLoadingEnabled="true"
-							 xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
-				<EntitySet Name="Invoices" EntityType="NorthwindModel.Invoice"/>
-			</EntityContainer>
-		</Schema>
-	</edmx:DataServices>
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+ <edmx:DataServices m:DataServiceVersion="2.0">
+  <Schema Namespace="009_MSS_MOBILE_WORK_APP" xml:lang="de" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+   <EntityType Name="Employee" sap:content-version="1">
+    <Key>
+     <PropertyRef Name="pernr"/>
+    </Key>
+    <Property Name="mobileWork" Type="009_MSS_MOBILE_WORK_APP.MobileWork" Nullable="false"/>
+    <Property Name="pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Personalnr"/>
+    <Property Name="beginDate" Type="Edm.DateTime" Precision="0" sap:label="Gültig ab"/>
+    <Property Name="endDate" Type="Edm.DateTime" Precision="0" sap:label="Gültig bis"/>
+    <Property Name="maxWorkhoursPerWeek" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="Arbst. Woche"/>
+    <Property Name="workDaysPerWeek" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="Arbeitstage"/>
+    <Property Name="sortableName" Type="Edm.String" MaxLength="30" sap:label="Nachn. Vorn."/>
+    <Property Name="completeName" Type="Edm.String" MaxLength="40" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="false" sap:label="Name MA/Bew."/>
+   </EntityType>
+   <ComplexType Name="DailyHours">
+    <Property Name="available" Type="Edm.String" MaxLength="1"/>
+    <Property Name="dayNumber" Type="Edm.Int32"/>
+    <Property Name="completeDay" Type="Edm.String" MaxLength="1"/>
+    <Property Name="deviantHours" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="Arbst. Tag"/>
+   </ComplexType>
+   <ComplexType Name="Week">
+    <Property Name="day1" Type="009_MSS_MOBILE_WORK_APP.DailyHours" Nullable="false"/>
+    <Property Name="day2" Type="009_MSS_MOBILE_WORK_APP.DailyHours" Nullable="false"/>
+    <Property Name="day3" Type="009_MSS_MOBILE_WORK_APP.DailyHours" Nullable="false"/>
+    <Property Name="day4" Type="009_MSS_MOBILE_WORK_APP.DailyHours" Nullable="false"/>
+    <Property Name="day5" Type="009_MSS_MOBILE_WORK_APP.DailyHours" Nullable="false"/>
+    <Property Name="day6" Type="009_MSS_MOBILE_WORK_APP.DailyHours" Nullable="false"/>
+    <Property Name="day7" Type="009_MSS_MOBILE_WORK_APP.DailyHours" Nullable="false"/>
+   </ComplexType>
+   <ComplexType Name="MobileWorkOptions">
+    <Property Name="text" Type="Edm.String"/>
+    <Property Name="agreementWorkdays" Type="009_MSS_MOBILE_WORK_APP.Week" Nullable="false"/>
+   </ComplexType>
+   <ComplexType Name="MobileWork">
+    <Property Name="beginDate" Type="Edm.DateTime" Precision="0" sap:label="Gültig ab"/>
+    <Property Name="endDate" Type="Edm.DateTime" Precision="0" sap:label="Gültig bis"/>
+    <Property Name="workHoursPerWeek" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="Arbst. Woche"/>
+    <Property Name="status" Type="Edm.String"/>
+    <Property Name="options" Type="009_MSS_MOBILE_WORK_APP.MobileWorkOptions" Nullable="false"/>
+   </ComplexType>
+   <EntityContainer Name="009_MSS_MOBILE_WORK_APP_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+    <EntitySet Name="EmployeeCollection" EntityType="009_MSS_MOBILE_WORK_APP.Employee" sap:content-version="1"/>
+   </EntityContainer>
+   <atom:link rel="self" href="http://ipe.wob.vw.vwg:5000/sap/opu/odata/VWK/009_MSS_MOBILE_WORK_APP/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+   <atom:link rel="latest-version" href="http://ipe.wob.vw.vwg:5000/sap/opu/odata/VWK/009_MSS_MOBILE_WORK_APP/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+  </Schema>
+ </edmx:DataServices>
 </edmx:Edmx>

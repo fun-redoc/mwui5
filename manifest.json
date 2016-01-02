@@ -12,14 +12,28 @@
     },
     "ach": "CA-UI5-DOC",
     "dataSources" : {
-      "invoiceRemote" : {
-        "uri" : "http://xyz/destinations/northwind/V3/Northwind/Northwind.svc/",
+      "employeesRemoteDev" : {
+        "uri" : "http://ipe.wob.vw.vwg:5000/sap/opu/odata/VWK/009_MSS_MOBILE_WORK_APP/",
         "type" : "OData",
         "settings" : {
-          "odataVersion" : "2.0"
+          "odataVersion" : "1.0"
+        }
+      },
+      "employeesRemoteQS" : {
+        "uri" : "http://ipq.wob.vw.vwg:5000/sap/opu/odata/VWK/009_MSS_MOBILE_WORK_APP/",
+        "type" : "OData",
+        "settings" : {
+          "odataVersion" : "1.0"
+        }
+      },
+      "employeesRemoteProd" : {
+        "uri" : "http://ipp.wob.vw.vwg:5000/sap/opu/odata/VWK/009_MSS_MOBILE_WORK_APP/",
+        "type" : "OData",
+        "settings" : {
+          "odataVersion" : "1.0"
         }
       } 
-    } 
+    }
     },
     "sap.ui": {
     "_version": "0.0.1",
@@ -49,7 +63,7 @@
           "bundleName": "rsh.i18n.i18n"
         }
       },
-      "invoice" : "invoiceRemote"
+      "persons" : "employeesRemoteDev" 
     },
     "resources"	: {
       "css" : [
