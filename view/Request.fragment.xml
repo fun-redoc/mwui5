@@ -4,6 +4,7 @@
 	xmlns:f="sap.ui.layout.form"
 	xmlns:core="sap.ui.core">
 	<f:Form id="idFormRequestEdit"
+	      validateFieldGroup="onValidateForm"
 	      visible = "false"
 				minWidth="1024"
 				maxContainerCols="2"
@@ -25,23 +26,37 @@
 						<f:formElements>
 							<f:FormElement label="{i18n>beginDate}">
 								<f:fields>
-									<DatePicker id="idBeginDate"
-															value="{path:'persons>mobileWork/beginDate', 
-																			type:'sap.ui.model.type.Date', 
-																			formatOptions: { style: 'medium', strictParsing: true}}" />
+									<DatePicker id="idBeginDate" fieldGroupIds="formEdit"
+									       change="onChangeX"
+												value="{path:'persons>mobileWork/beginDate', 
+																type:'sap.ui.model.odata.type.Date', 
+																formatOptions: { style: 'medium', strictParsing: true}}" />
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>endDate}">
 								<f:fields>
-									<DatePicker id="idEndDate"
-															value="{path:'persons>mobileWork/endDate', 
-																			type:'sap.ui.model.type.Date', 
-																			formatOptions: { style: 'medium', strictParsing: true}}" />
+									<DatePicker id="idEndDate" fieldGroupIds="formEdit"
+									       change="onChangeX"
+									      valueStateText = "{i18n>onlyValidDateFormat}"
+									      showValueStateMessage="true"
+												value="{path:'persons>mobileWork/endDate', 
+																type:'sap.ui.model.odata.type.Date', 
+																formatOptions: { style: 'medium', strictParsing: true},
+																constraints : { nullable : false,
+																                isDateOnly : true }}"
+									/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>workHoursPerWeek}">
 								<f:fields>
-									<Input id="idWorkHoursPerWeek" value="{persons>mobileWork/workHoursPerWeek}"/>
+									<Input id="idWorkHoursPerWeek" fieldGroupIds="formEdit"
+									       change="onChangeX"
+									       valueStateText="Hello"
+									       type="Text"
+									       showValueStateMessage="true"
+									       value="{path: 'persons>mobileWork/workHoursPerWeek',
+									               type: '.typeHours',
+									               constraints: { nullable : false }}"/>
 								</f:fields>
 							</f:FormElement>
 						</f:formElements>

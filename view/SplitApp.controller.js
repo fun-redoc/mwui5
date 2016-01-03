@@ -11,6 +11,7 @@ function(Controller,formatter) {
       return !res
     },
     onInit : function() {
+//      console.log("model", this.getOwnerComponent().getModel("persons"))
 //      var testModel = new sap.ui.model.json.JSONModel(
 //        [ { pernr : "986883", sortableName : "Roland,  Stellmach", status : "requested", startDate : "2015-12-24", endDate : "2016-06-24" }
 //        , { pernr : "986883", sortableName : "Sophie,  Stellmach", status : "granted"  , startDate : "2015-11-24", endDate : "2016-05-24" }
@@ -20,6 +21,24 @@ function(Controller,formatter) {
 //        ]
 //      )
 //      this.getView().setModel(testModel, "testModel")
+// Register the view with the message manager
+			//sap.ui.getCore().getMessageManager().registerObject(this.getView(), true);
+     // sap.ui.getCore().attachValidationError(function (oEvent) {  
+     //   console.log("on validation error")
+     //     oEvent.getParameter("element").setValueState(sap.ui.core.ValueState.Error);  
+     // });  
+     // sap.ui.getCore().attachValidationSuccess(function (oEvent) {  
+     //   console.log("on validation success")
+     //     oEvent.getParameter("element").setValueState(sap.ui.core.ValueState.None);  
+     // });  			
+     // sap.ui.getCore().attachFormatError(function (oEvent) {
+     //   console.log("on format error")
+     //   oEvent.getParameter("element").setValueState(sap.ui.core.ValueState.Error);
+     // });
+     // sap.ui.getCore().attachParseError(function (oEvent) {
+     //   console.log("on parse error")
+     //     oEvent.getParameter("element").setValueState(sap.ui.core.ValueState.Error);
+     // });
     },
     onOpenDialog : function() {
             this.getOwnerComponent().helloDialog.open(this.getView())
@@ -167,6 +186,47 @@ function(Controller,formatter) {
       //console.log("onCancelPress")
       this._allButtonsInvisible()
       this._toViewMode(false) // refrehs is asnc
-    }
+    },
+    onChangeX : function(evt) {
+      console.log("onChangeX", evt)
+//      evt.getSource().setValueState(sap.ui.core.ValueState.Error)
+
+          evt.bCancelBubble = true; //stop bubbling to the parent control
+    },
+    onValidateForm : function(evt) {
+     console.log("onValidateForm") 
+     var aFieldGroup = evt.getParameters().fieldGroupIds;
+      if (aFieldGroup.indexOf("MyGroup") > -1) {
+          //do validation
+          evt.bCancelBubble = true; //stop bubbling to the parent control
+      }
+    },
+    
+    
+    
+    /**
+		 * This is a custom model type for validating email
+		 */
+		typeHours : sap.ui.model.odata.type.Decimal.extend("rsh.model.TypeHours", {
+			formatValue: function (oValue) {
+			  console.log("formatValueX")
+				return oValue;
+			},
+			parseValue: function (oValue) {
+			  console.log("parseValue")
+				//parsing step takes place before validating step, value can be altered
+				return oValue;
+			},
+			validateValue: function (oValue) {
+			  console.log("validateValue")
+				// The following Regex is NOT a completely correct one and only used for demonstration purposes.
+				// RFC 5322 cannot even checked by a Regex and the Regex for RFC 822 is very long and complex.
+				//var mailregex = /^\w+[\w-+\.]*\@\w+([-\.]\w+)*\.[a-zA-Z]{2,}$/;
+				var hourRegEx = /^[0-4]?[0-9](\.[0-6]?[0-9]?)$/
+				if (!oValue.match(mailregex)) {
+					throw new sap.ui.model.SimpleTypeValidateException("'" + oValue + "' is not a valid email address");
+				}
+			}
+		})
   })
 })

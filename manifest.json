@@ -63,7 +63,11 @@
           "bundleName": "rsh.i18n.i18n"
         }
       },
-      "persons" : "employeesRemoteDev" 
+      "persons" : {
+        "type" : "sap.ui.model.odata.v2.ODataModel",
+        "dataSource" : "employeesRemoteDev" ,
+        "settings": {"defaultBindingMode": "sap.ui.model.BindingMode.TwoWay"}
+      }
     },
     "resources"	: {
       "css" : [
