@@ -12,6 +12,13 @@
     },
     "ach": "CA-UI5-DOC",
     "dataSources" : {
+      "employeesRemoteDevProxy" : {
+        "uri" : "proxy/sap/opu/odata/VWK/009_MSS_MOBILE_WORK_APP/",
+        "type" : "OData",
+        "settings" : {
+          "odataVersion" : "1.0"
+        }
+      },
       "employeesRemoteDev" : {
         "uri" : "http://ipe.wob.vw.vwg:5000/sap/opu/odata/VWK/009_MSS_MOBILE_WORK_APP/",
         "type" : "OData",
@@ -65,8 +72,9 @@
       },
       "persons" : {
         "type" : "sap.ui.model.odata.v2.ODataModel",
-        "dataSource" : "employeesRemoteDev" ,
-        "settings": {"defaultBindingMode": "sap.ui.model.BindingMode.TwoWay"}
+        "dataSource" : "employeesRemoteDevProxy" ,
+        "settings": {"defaultBindingMode": "sap.ui.model.BindingMode.TwoWay",
+                     "useBatch" : "false" }
       }
     },
     "resources"	: {

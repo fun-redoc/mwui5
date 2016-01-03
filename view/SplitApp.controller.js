@@ -174,8 +174,14 @@ function(Controller,formatter) {
             var editObject = context.getObject()
             editObject = self._setObjectValuesFromEditView(editObject)
             editObject.mobileWork.status = "requested"
-            context.getModel().setProperty(context.getPath(), editObject, context, false)
+            //context.getModel().setProperty(context.getPath(), editObject, context, true)
+            context.getModel().update(context.getPath(), editObject, 
+            		                  {context : context, 
+            	                 	   success : function() { console.log("TODO success", arguments)},
+            	                 	   error   : function() { console.log("TODO error", arguments)}
+            		                  })
             if( model.hasPendingChanges() ) {
+              console.log("pending changes")
               var res = model.submitChanges(self._successCallback, self._failureCallback) // TODO - subitChanges has  a useful ETag parameter
               // the callbacks arent called, why??
             }
