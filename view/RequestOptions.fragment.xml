@@ -7,10 +7,9 @@
 			  visible="false"
 				minWidth="1024"
 				maxContainerCols="2"
-				editable="false"
-				class="isReadonly">
+				editable="true">
 				<f:title>
-					<core:Title text="EDIT {i18n>personData}" />
+					<core:Title text="EDIT {i18n>contractOptionis}" />
 				</f:title>
 				<f:layout>
 					<f:ResponsiveGridLayout
@@ -24,9 +23,18 @@
 				<f:formContainers>
 					<f:FormContainer>
 						<f:formElements>
-							<f:FormElement label="{i18n>lastName}">
+							<f:FormElement label="{i18n>singleDays}">
 								<f:fields>
-									<Text text="{persons>lastName}" />
+									<CheckBox id="idDay1" text="{i18n>monday}" selected="{persons>mobileWork/optionions/agreementWorkdays/day1}" 
+									          change="onChangeDay"> </CheckBox></CheckBox>
+									<CheckBox id="idDay2" text="{i18n>tuesday}" selected="{persons>mobileWork/optionions/agreementWorkdays/day2}" 
+									          change="onChangeDay"> </CheckBox></CheckBox>
+									<CheckBox id="idDay3" text="{i18n>wednesday}" selected="{persons>mobileWork/optionions/agreementWorkdays/day3}" 
+									          change="onChangeDay"> </CheckBox></CheckBox>
+									<CheckBox id="idDay4" text="{i18n>thursday}" selected="{persons>mobileWork/optionions/agreementWorkdays/day4}" 
+									          change="onChangeDay"> </CheckBox></CheckBox>
+									<CheckBox id="idDay5" text="{i18n>friday}" selected="{persons>mobileWork/optionions/agreementWorkdays/day5}" 
+									          change="onChangeDay"> </CheckBox></CheckBox>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>firstName}">

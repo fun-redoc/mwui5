@@ -72,8 +72,8 @@
       },
       "persons" : {
         "type" : "sap.ui.model.odata.v2.ODataModel",
-        "dataSource" : "employeesRemoteDevProxy" ,
-        "settings": {"defaultBindingMode": "sap.ui.model.BindingMode.TwoWay",
+        "dataSource" : "employeesRemoteDev" ,
+        "settings": {"defaultBindingMode": "sap.ui.model.BindingMode.OneWay",
                      "useBatch" : "false" }
       }
     },
