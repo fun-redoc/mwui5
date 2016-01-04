@@ -11,15 +11,6 @@ function(Controller,formatter) {
       return !res
     },
     onInit : function() {
-//      console.log("model", this.getOwnerComponent().getModel("persons"))
-//      var testModel = new sap.ui.model.json.JSONModel(
-//        [ { pernr : "986883", sortableName : "Roland,  Stellmach", status : "requested", startDate : "2015-12-24", endDate : "2016-06-24" }
-//        , { pernr : "986883", sortableName : "Sophie,  Stellmach", status : "granted"  , startDate : "2015-11-24", endDate : "2016-05-24" }
-//        , { pernr : "986883", sortableName : "Options, With",      status : "granted"  , startDate : "2015-11-24", endDate : "2016-05-24" , options : { text : "hallo 1"} }
-//        , { pernr : "986883", sortableName : "Options, With2",     status : "granted"  , startDate : "2015-11-24", endDate : "2016-05-24" , options : { text : "hallo "} }
-//        , { pernr : "986883", sortableName : "Natalie, Stellmach", status : "none" }
-//        ]
-//      )
 //      this.getView().setModel(testModel, "testModel")
 // Register the view with the message manager
 			//sap.ui.getCore().getMessageManager().registerObject(this.getView(), true);

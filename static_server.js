@@ -3,7 +3,7 @@ var express = require('express'),
 	open = require('open');
 	app = express(),
 	port = process.env.PORT || 8877,
-	sapui5 = '/MobileWork'
+	sapui5 = '/'
 	url = 'http://localhost:' + port + sapui5,// + "/latest";
 	year = 60 * 60 * 24 * 365 * 1000;
  

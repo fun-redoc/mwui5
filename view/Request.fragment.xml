@@ -7,7 +7,7 @@
 	      validateFieldGroup="onValidateForm"
 	      visible = "false"
 				minWidth="1024"
-				maxContainerCols="2"
+				maxContainerCols="4"
 				editable="true">
 				<f:title>
 					<core:Title text="{i18n>requestBasics}" />

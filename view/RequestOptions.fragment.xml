@@ -26,25 +26,20 @@
 							<f:FormElement label="{i18n>singleDays}">
 								<f:fields>
 									<CheckBox id="idDay1" text="{i18n>monday}" selected="{persons>mobileWork/optionions/agreementWorkdays/day1}" 
-									          change="onChangeDay"> </CheckBox></CheckBox>
+									          change="onChangeDay"> </CheckBox>
 									<CheckBox id="idDay2" text="{i18n>tuesday}" selected="{persons>mobileWork/optionions/agreementWorkdays/day2}" 
-									          change="onChangeDay"> </CheckBox></CheckBox>
+									          change="onChangeDay"> </CheckBox>
 									<CheckBox id="idDay3" text="{i18n>wednesday}" selected="{persons>mobileWork/optionions/agreementWorkdays/day3}" 
-									          change="onChangeDay"> </CheckBox></CheckBox>
+									          change="onChangeDay"> </CheckBox>
 									<CheckBox id="idDay4" text="{i18n>thursday}" selected="{persons>mobileWork/optionions/agreementWorkdays/day4}" 
-									          change="onChangeDay"> </CheckBox></CheckBox>
+									          change="onChangeDay"> </CheckBox>
 									<CheckBox id="idDay5" text="{i18n>friday}" selected="{persons>mobileWork/optionions/agreementWorkdays/day5}" 
-									          change="onChangeDay"> </CheckBox></CheckBox>
+									          change="onChangeDay"> </CheckBox>
 								</f:fields>
 							</f:FormElement>
-							<f:FormElement label="{i18n>firstName}">
+							<f:FormElement label="{i18n>additionalText}">
 								<f:fields>
-									<Text text="{persons>firstName}" />
-								</f:fields>
-							</f:FormElement>
-							<f:FormElement label="{i18n>pernr}">
-								<f:fields>
-									<Text text="{persons>pernr}" />
+									<Text text="{persons>mobileWork/options/text}" />
 								</f:fields>
 							</f:FormElement>
 						</f:formElements>

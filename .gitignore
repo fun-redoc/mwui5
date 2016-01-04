@@ -3,7 +3,9 @@
 *.swp
 *.out
 *.class
+*.*~
 /build
-node_modules
+/node_modules
+/lib
 .idea
 .project

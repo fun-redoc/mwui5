@@ -5,7 +5,8 @@ var urlConfig = {
     protocol : 'http',
     host : 'localhost',
     port : '8877',
-    urlPath : '/ui5-boilerplate'
+    urlPath : '/',
+    indexRef : 'test/testService.html'
 }
 
 module.exports = function(grunt) {
@@ -19,7 +20,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         watch: {
             express: {
-                files: ['**/*.js'],
+                files: ['**/*.js', '**/*.xml', '**/*.html', '**/*.json'],
                 tasks: ['express:dev'],
                 options: {
                     spawn: false
@@ -28,7 +29,7 @@ module.exports = function(grunt) {
         },
         open: {
             dev: {
-                path: urlConfig.protocol + '://' + urlConfig.host + ':' + urlConfig.port + urlConfig.urlPath
+                path: urlConfig.protocol + '://' + urlConfig.host + ':' + urlConfig.port + urlConfig.urlPath + urlConfig.indexRef
             }
         },
         express: {
