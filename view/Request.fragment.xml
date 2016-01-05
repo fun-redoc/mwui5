@@ -3,26 +3,7 @@
 	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form"
 	xmlns:core="sap.ui.core">
-	<f:Form id="idFormRequestEdit"
-	      validateFieldGroup="onValidateForm"
-	      visible = "false"
-				minWidth="1024"
-				maxContainerCols="4"
-				editable="true">
-				<f:title>
-					<core:Title text="{i18n>requestBasics}" />
-				</f:title>
-				<f:layout>
-					<f:ResponsiveGridLayout
-						labelSpanL="3"
-						labelSpanM="3"
-						emptySpanL="4"
-						emptySpanM="4"
-						columnsL="1"
-						columnsM="1" />
-				</f:layout>
-				<f:formContainers>
-					<f:FormContainer>
+					<f:FormContainer id="idFormRequestEdit" visible="false" title="{i18n>formRequest}">
 						<f:formElements>
 							<f:FormElement label="{i18n>beginDate}">
 								<f:fields>
@@ -59,30 +40,14 @@
 									               constraints: { nullable : false }}"/>
 								</f:fields>
 							</f:FormElement>
+							<f:FormElement label="{i18n>confirmationOfBasicRequest}">
+								<f:fields>
+									<CheckBox id="idBasicRequestConfirmed" selected="false" text="{i18n>pleaseConfirmTheBasicRequest}" change="onChangeX" />
+								</f:fields>
+							</f:FormElement>
 						</f:formElements>
 					</f:FormContainer>
-				</f:formContainers>
-			</f:Form>
-	<f:Form id="idFormRequest"
-			  visible="false"
-				minWidth="1024"
-				maxContainerCols="2"
-				editable="false"
-				class="isReadonly">
-				<f:title>
-					<core:Title text="{i18n>requestBasics}" />
-				</f:title>
-				<f:layout>
-					<f:ResponsiveGridLayout
-						labelSpanL="3"
-						labelSpanM="3"
-						emptySpanL="4"
-						emptySpanM="4"
-						columnsL="1"
-						columnsM="1" />
-				</f:layout>
-				<f:formContainers>
-					<f:FormContainer>
+					<f:FormContainer id="idFormRequest" visible="false" title="{i18n>requestBasics}">
 						<f:formElements>
 							<f:FormElement label="{i18n>requestStatus}">
 								<f:fields>
@@ -106,6 +71,4 @@
 							</f:FormElement>
 						</f:formElements>
 					</f:FormContainer>
-				</f:formContainers>
-	</f:Form>
 </core:FragmentDefinition>

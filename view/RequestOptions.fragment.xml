@@ -3,25 +3,7 @@
 	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form"
 	xmlns:core="sap.ui.core">
-	<f:Form id="idFormRequestOptionsEdit"
-			  visible="false"
-				minWidth="1024"
-				maxContainerCols="2"
-				editable="true">
-				<f:title>
-					<core:Title text="EDIT {i18n>contractOptionis}" />
-				</f:title>
-				<f:layout>
-					<f:ResponsiveGridLayout
-						labelSpanL="3"
-						labelSpanM="3"
-						emptySpanL="4"
-						emptySpanM="4"
-						columnsL="1"
-						columnsM="1" />
-				</f:layout>
-				<f:formContainers>
-					<f:FormContainer>
+					<f:FormContainer id="idFormRequestOptionsEdit" visible="false" title="{i18n>contractOptionis}" expandable="true" expanded="false">
 						<f:formElements>
 							<f:FormElement label="{i18n>singleDays}">
 								<f:fields>
@@ -42,30 +24,14 @@
 									<Text text="{persons>mobileWork/options/text}" />
 								</f:fields>
 							</f:FormElement>
+							<f:FormElement label="{i18n>confirmationOfOptions}">
+								<f:fields>
+									<CheckBox id="idOptionsConfirmed" selected="false" text="{i18n>pleaseConfirmOptions}" change="onChangeX" />
+								</f:fields>
+							</f:FormElement>
 						</f:formElements>
 					</f:FormContainer>
-				</f:formContainers>
-	</f:Form>
-	<f:Form id="idFormRequestOptions"
-			  visible="false"
-				minWidth="1024"
-				maxContainerCols="2"
-				editable="false"
-				class="isReadonly">
-				<f:title>
-					<core:Title text="{i18n>personData}" />
-				</f:title>
-				<f:layout>
-					<f:ResponsiveGridLayout
-						labelSpanL="3"
-						labelSpanM="3"
-						emptySpanL="4"
-						emptySpanM="4"
-						columnsL="1"
-						columnsM="1" />
-				</f:layout>
-				<f:formContainers>
-					<f:FormContainer>
+					<f:FormContainer id="idFormRequestOptions" visible="false" title="{i18n>contractOptionis}">
 						<f:formElements>
 							<f:FormElement label="{i18n>lastName}">
 								<f:fields>
@@ -84,6 +50,4 @@
 							</f:FormElement>
 						</f:formElements>
 					</f:FormContainer>
-				</f:formContainers>
-	</f:Form>
 </core:FragmentDefinition>

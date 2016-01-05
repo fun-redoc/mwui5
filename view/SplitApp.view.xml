@@ -4,6 +4,7 @@
 	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
 	displayBlock="true">
 	<SplitApp id="app" initialDetail="idInitial" initialMaster="idMaster" orientationChange="onOrientationChange">
 		<masterPages>
@@ -38,17 +39,29 @@
       			</Bar>
       		</footer>
   			  <content>
-  			    	<l:Grid
-            	  visible="true"
-            		defaultSpan="L12 M12 S12"
-            		hSpacing="2"
-            		width="auto">
-            		<l:content>
+  			  	<f:Form 
+			  visible="true"
+				minWidth="1024"
+				maxContainerCols="2"
+				editable="true">
+				<f:title>
+					<core:Title text="{i18n>requestMobileWork}" />
+				</f:title>
+				<f:layout>
+					<f:ResponsiveGridLayout
+						labelSpanL="3"
+						labelSpanM="3"
+						emptySpanL="4"
+						emptySpanM="4"
+						columnsL="1"
+						columnsM="1" />
+				</f:layout>
+				<f:formContainers>
                    <core:Fragment fragmentName="rsh.view.Person" type="XML" />
                    <core:Fragment fragmentName="rsh.view.Request" type="XML"/>
                    <core:Fragment fragmentName="rsh.view.RequestOptions" type="XML" />
-                </l:content>
-              </l:Grid>
+                </f:formContainers>
+  			  </f:Form>
   			  </content>
         </Page>
 		</detailPages>

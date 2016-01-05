@@ -3,25 +3,7 @@
 	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form"
 	xmlns:core="sap.ui.core">
-	<f:Form id="FormDisplay354"
-				minWidth="1024"
-				maxContainerCols="2"
-				editable="false"
-				class="isReadonly">
-				<f:title>
-					<core:Title text="{i18n>personData}" />
-				</f:title>
-				<f:layout>
-					<f:ResponsiveGridLayout
-						labelSpanL="3"
-						labelSpanM="3"
-						emptySpanL="4"
-						emptySpanM="4"
-						columnsL="1"
-						columnsM="1" />
-				</f:layout>
-				<f:formContainers>
-					<f:FormContainer>
+					<f:FormContainer title="{i18n>personData}">
 						<f:formElements>
 							<f:FormElement label="{i18n>name}">
 								<f:fields>
@@ -35,6 +17,4 @@
 							</f:FormElement>
 						</f:formElements>
 					</f:FormContainer>
-				</f:formContainers>
-	</f:Form>
 </core:FragmentDefinition>
