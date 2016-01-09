@@ -5,6 +5,7 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form"
+	xmlns:rsh="rsh.control"
 	displayBlock="true">
 	<SplitApp id="app" initialDetail="idInitial" initialMaster="idMaster" orientationChange="onOrientationChange">
 		<masterPages>
@@ -26,7 +27,11 @@
 			</Page>
 		</masterPages>
 			<detailPages>
-  			<Page id="idInitial" title="{i18n>initialPageTitle}" />
+  			<Page id="idInitial" title="{i18n>initialPageTitle}" >
+				  <rsh:DayOption id="idOptDayX" text="{i18n>monday}" value="{persons>mobileWork/options/agreementWorkdays/day1}" change="onChangeDay" />
+				  <rsh:DayOption id="idOptDayY" text="{i18n>monday}" value="{persons>mobileWork/options/agreementWorkdays/day1}" change="onChangeDay" />
+				
+  			</Page>
   			<Page id="idDetail" title="{i18n>detailPageTitle}" >
   			  <footer>
       			<Bar>
@@ -39,8 +44,15 @@
       			</Bar>
       		</footer>
   			  <content>
-  			  	<f:Form 
+<!--  			  <l:Grid
 			  visible="true"
+			  defaultSpan="L12 M12 S12"
+			  hSpacing="2"
+			  width="auto">
+			  <l:content>
+			  -->
+  			  	<f:Form 
+				  visible="true"
 				minWidth="1024"
 				maxContainerCols="2"
 				editable="true">
@@ -48,13 +60,13 @@
 					<core:Title text="{i18n>requestMobileWork}" />
 				</f:title>
 				<f:layout>
-					<f:ResponsiveGridLayout
+				  <f:ResponsiveGridLayout
 						labelSpanL="3"
 						labelSpanM="3"
 						emptySpanL="4"
 						emptySpanM="4"
 						columnsL="1"
-						columnsM="1" />
+						columnsM="1" /> 
 				</f:layout>
 				<f:formContainers>
                    <core:Fragment fragmentName="rsh.view.Person" type="XML" />
@@ -62,6 +74,8 @@
                    <core:Fragment fragmentName="rsh.view.RequestOptions" type="XML" />
                 </f:formContainers>
   			  </f:Form>
+			   <!--  </l:content>
+			   </l:Grid> -->
   			  </content>
         </Page>
 		</detailPages>

@@ -1,53 +1,59 @@
 <core:FragmentDefinition
 	xmlns="sap.m"
+	xmlns:rsh="rsh.control"
 	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form"
 	xmlns:core="sap.ui.core">
-					<f:FormContainer id="idFormRequestOptionsEdit" visible="false" title="{i18n>contractOptionis}" expandable="true" expanded="false">
-						<f:formElements>
-							<f:FormElement label="{i18n>singleDays}">
-								<f:fields>
-									<CheckBox id="idDay1" text="{i18n>monday}" selected="{persons>mobileWork/optionions/agreementWorkdays/day1}" 
-									          change="onChangeDay"> </CheckBox>
-									<CheckBox id="idDay2" text="{i18n>tuesday}" selected="{persons>mobileWork/optionions/agreementWorkdays/day2}" 
-									          change="onChangeDay"> </CheckBox>
-									<CheckBox id="idDay3" text="{i18n>wednesday}" selected="{persons>mobileWork/optionions/agreementWorkdays/day3}" 
-									          change="onChangeDay"> </CheckBox>
-									<CheckBox id="idDay4" text="{i18n>thursday}" selected="{persons>mobileWork/optionions/agreementWorkdays/day4}" 
-									          change="onChangeDay"> </CheckBox>
-									<CheckBox id="idDay5" text="{i18n>friday}" selected="{persons>mobileWork/optionions/agreementWorkdays/day5}" 
-									          change="onChangeDay"> </CheckBox>
-								</f:fields>
-							</f:FormElement>
-							<f:FormElement label="{i18n>additionalText}">
-								<f:fields>
-									<Text text="{persons>mobileWork/options/text}" />
-								</f:fields>
-							</f:FormElement>
-							<f:FormElement label="{i18n>confirmationOfOptions}">
-								<f:fields>
-									<CheckBox id="idOptionsConfirmed" selected="false" text="{i18n>pleaseConfirmOptions}" change="onChangeX" />
-								</f:fields>
-							</f:FormElement>
-						</f:formElements>
-					</f:FormContainer>
-					<f:FormContainer id="idFormRequestOptions" visible="false" title="{i18n>contractOptionis}">
-						<f:formElements>
-							<f:FormElement label="{i18n>lastName}">
-								<f:fields>
-									<Text text="{persons>lastName}" />
-								</f:fields>
-							</f:FormElement>
-							<f:FormElement label="{i18n>firstName}">
-								<f:fields>
-									<Text text="{persons>firstName}" />
-								</f:fields>
-							</f:FormElement>
-							<f:FormElement label="{i18n>pernr}">
-								<f:fields>
-									<Text text="{persons>pernr}" />
-								</f:fields>
-							</f:FormElement>
-						</f:formElements>
-					</f:FormContainer>
+	<f:FormContainer id="idFormRequestOptionsEdit" visible="false" title="{i18n>contractOptionis}" expandable="true" expanded="true">
+		<f:formElements>
+			<f:FormElement label="{i18n>singleDays}">
+				<f:fields>
+ 					<rsh:DayOption id="idOptDay1" text="{i18n>monday}" value="{persons>mobileWork/options/agreementWorkdays/day1}" change="onChangeDay" /> 
+				</f:fields>
+			</f:FormElement>
+			<f:FormElement label="{i18n>singleDays}">
+				<f:fields>
+					<CheckBox id="idDay1" text="{i18n>monday}" selected="{persons>mobileWork/options/agreementWorkdays/day1}" 
+						  change="onChangeDay"> </CheckBox>
+					<CheckBox id="idDay2" text="{i18n>tuesday}" selected="{persons>mobileWork/options/agreementWorkdays/day2}" 
+						  change="onChangeDay"> </CheckBox>
+					<CheckBox id="idDay3" text="{i18n>wednesday}" selected="{persons>mobileWork/options/agreementWorkdays/day3}" 
+						  change="onChangeDay"> </CheckBox>
+					<CheckBox id="idDay4" text="{i18n>thursday}" selected="{persons>mobileWork/options/agreementWorkdays/day4}" 
+						  change="onChangeDay"> </CheckBox>
+					<CheckBox id="idDay5" text="{i18n>friday}" selected="{persons>mobileWork/options/agreementWorkdays/day5}" 
+						  change="onChangeDay"> </CheckBox>
+				</f:fields>
+			</f:FormElement>
+			<f:FormElement label="{i18n>additionalText}">
+				<f:fields>
+					<Text text="{persons>mobileWork/options/text}" />
+				</f:fields>
+			</f:FormElement>
+			<f:FormElement label="{i18n>confirmationOfOptions}">
+				<f:fields>
+					<CheckBox id="idOptionsConfirmed" selected="false" text="{i18n>pleaseConfirmOptions}" change="onChangeX" />
+				</f:fields>
+			</f:FormElement>
+		</f:formElements>
+	</f:FormContainer>
+	<f:FormContainer id="idFormRequestOptions" visible="false" title="{i18n>contractOptionis}">
+		<f:formElements>
+			<f:FormElement label="{i18n>lastName}">
+				<f:fields>
+					<Text text="{persons>lastName}" />
+				</f:fields>
+			</f:FormElement>
+			<f:FormElement label="{i18n>firstName}">
+				<f:fields>
+					<Text text="{persons>firstName}" />
+				</f:fields>
+			</f:FormElement>
+			<f:FormElement label="{i18n>pernr}">
+				<f:fields>
+					<Text text="{persons>pernr}" />
+				</f:fields>
+			</f:FormElement>
+		</f:formElements>
+	</f:FormContainer>
 </core:FragmentDefinition>
