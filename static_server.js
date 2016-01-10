@@ -1,9 +1,9 @@
 // Usage see http://scn.sap.com/community/developer-center/front-end/blog/2014/01/05/sapui5-sdk-on-nodejs
 var express = require('express'),
-	open = require('open');
+	open = require('open'),
 	app = express(),
 	port = process.env.PORT || 8877,
-	sapui5 = '/'
+	sapui5 = '/',
 	url = 'http://localhost:' + port + sapui5,// + "/latest";
 	year = 60 * 60 * 24 * 365 * 1000;
  
@@ -19,5 +19,5 @@ app.use(sapui5,express.static(__dirname, { maxAge: year, hidden: true }));
 app.use(sapui5,express.directory(__dirname));
  
 app.listen(port);
-open(url); //open in default browser
+//open(url); //open in default browser
 console.log("Static file server running at\n  => " + url + " \nCTRL + C to shutdown");

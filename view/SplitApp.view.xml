@@ -28,43 +28,39 @@
 		</masterPages>
 			<detailPages>
   			<Page id="idInitial" title="{i18n>initialPageTitle}" >
-				  <rsh:DayOption id="idOptDayX" text="{i18n>monday}" value="{persons>mobileWork/options/agreementWorkdays/day1}" change="onChangeDay" />
-				  <rsh:DayOption id="idOptDayY" text="{i18n>monday}" value="{persons>mobileWork/options/agreementWorkdays/day1}" change="onChangeDay" />
-				
   			</Page>
   			<Page id="idDetail" title="{i18n>detailPageTitle}" >
   			  <footer>
       			<Bar>
       				<contentRight>
-      					<Button id="idNew"    text="{i18n>newButtonText}"    visible="false" press="onNewPress" />
-      					<Button id="idSave"   text="{i18n>saveButtonText}"   visible="false"  press="onSavePress" type="Emphasized"/>
-      					<Button id="idExtend" text="{i18n>extendButtonText}" visible="false"  press="onExtendPress" />
-      					<Button id="idCancel" text="{i18n>cancelButtonText}" visible="false"  press="onCancelPress" />
+      					<Button id="idPrintOptions" text="{i18n>printOptions}"     visible="true"   press="onPrintOptionsPress" />
+      					<Button id="idNew"          text="{i18n>newButtonText}"    visible="false"  press="onNewPress" />
+      					<Button id="idSave"         text="{i18n>saveButtonText}"   visible="false"  press="onSavePress" type="Emphasized"/>
+      					<Button id="idExtend"       text="{i18n>extendButtonText}" visible="false"  press="onExtendPress" />
+      					<Button id="idCancel"       text="{i18n>cancelButtonText}" visible="false"  press="onCancelPress" />
       				</contentRight>
       			</Bar>
       		</footer>
   			  <content>
-<!--  			  <l:Grid
-			  visible="true"
-			  defaultSpan="L12 M12 S12"
-			  hSpacing="2"
-			  width="auto">
-			  <l:content>
-			  -->
+            <l:Grid defaultSpan="L12 M12 S12" width="auto">
+              <l:content>
   			  	<f:Form 
 				  visible="true"
 				minWidth="1024"
-				maxContainerCols="2"
+				maxContainerCols="1"
 				editable="true">
 				<f:title>
 					<core:Title text="{i18n>requestMobileWork}" />
 				</f:title>
 				<f:layout>
 				  <f:ResponsiveGridLayout
-						labelSpanL="3"
-						labelSpanM="3"
-						emptySpanL="4"
-						emptySpanM="4"
+						labelSpanL="2"
+						labelSpanM="2"
+						labelSpanS="2"
+						emptySpanL="0"
+						emptySpanM="0"
+						emptySpanS="0"
+						columnsS="1"
 						columnsL="1"
 						columnsM="1" /> 
 				</f:layout>
@@ -74,11 +70,10 @@
                    <core:Fragment fragmentName="rsh.view.RequestOptions" type="XML" />
                 </f:formContainers>
   			  </f:Form>
-			   <!--  </l:content>
-			   </l:Grid> -->
+        </l:content>
+      </l:Grid>
   			  </content>
         </Page>
 		</detailPages>
 	</SplitApp>
-
 </mvc:View>
