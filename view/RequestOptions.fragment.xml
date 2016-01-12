@@ -10,35 +10,7 @@
 			<f:FormElement label="{i18n>singleDays}">
 				<f:fields>
           <VBox>
-              <l:Grid defaultSpan="L12 M12 S12" width="auto">
-                <l:content>
-                  <Label text="{i18n>monday}" textAlign="Right" labelFor="idDay1Avaliable" class="sapUiSmallMarginTop sapUiSmallMarginBottom"  >
-                    <layoutData>
-                      <l:GridData span="L2 M2 S5"/>
-                    </layoutData>
-                  </Label>
-                  <CheckBox id="idDay1Avaliable" text="" selected="{persons>mobileWork/options/agreementWorkdays/day1/available}" change="onChangeDay"> 
-                    <layoutData>
-                      <l:GridData span="L1 M1 S7"/>
-                    </layoutData>
-                  </CheckBox>
-                  <Label text="{i18n>deviantHours}" labelFor="idDay1DeviantHours" class="sapUiSmallMarginTop sapUiSmallMarginBottom"  >
-                    <layoutData>
-                      <l:GridData span="L2 M2 S5" linebreakS="true" indentS="2"/>
-                    </layoutData>
-                  </Label>
-                  <Input id="idDay1DeviantHours" value="{persons>mobileWork/options/agreementWorkdays/day1/deviantHours}" change="onChangeDay" >
-                    <layoutData>
-                      <l:GridData span="L2 M2 S5" />
-                    </layoutData>
-                  </Input>
-                  <CheckBox id="idDay1Complete" text="{i18n>completeDay}" selected="{persons>mobileWork/options/agreementWorkdays/day1/completeDay}" change="onChangeDay"> 
-                    <layoutData>
-                      <l:GridData span="L3 M3 S10" linebreakS="true" indentS="2"/>
-                    </layoutData>
-                  </CheckBox>
-                </l:content>
-              </l:Grid>
+          <rsh:DayOption day="{i18n>monday}" option="{persons>mobileWork/options/agreementWorkdays/day1" change="onChangeDayOption"/>
           <rsh:DayOption day="{i18n>tuesday}" option="{persons>mobileWork/options/agreementWorkdays/day2" change="onChangeDayOption"/>
           <rsh:DayOption day="{i18n>wednesday}" option="{persons>mobileWork/options/agreementWorkdays/day3" change="onChangeDayOption"/>
           <rsh:DayOption day="{i18n>thursday}" option="{persons>mobileWork/options/agreementWorkdays/day4" change="onChangeDayOption"/>
