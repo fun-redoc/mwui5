@@ -51,6 +51,18 @@ function(Controller,formatter) {
     onOpenDialog : function() {
             this.getOwnerComponent().helloDialog.open(this.getView());
     },
+    _showView : function(path, obj, viewId) {
+              var self = this;
+              F.Maybe(self).obind('getView').obind('byId',viewId)
+                .bind(function(view) {
+                  view.bindElement({path:path, model:"persons"});
+                  F.Maybe(self.byId("app"))
+                      .obind('toDetail', view, 'slide' )
+                      .bind(function() {
+                        self._toViewMode(self._hasActiveRequest(obj));
+                      });
+                });
+    },
     itemSelected : function(evt) {
 //    var path = evt.getSource().getSelectedItem().getBindingContext("persons").getPath()
       var self = this;
@@ -59,23 +71,16 @@ function(Controller,formatter) {
                   .obind('getBindingContext',"persons")
                   //.obind('getPath')
                   .bind(function(context) {
-                    //var toDetailId   = self.getView().byId('idDetail')
+                    var obj = context.getObject();
+                    var hasActiveRequest = self._hasActiveRequest(obj);
                     F.Maybe(context)
                         .obind('getPath')
                         .bind(function(path){
-                            F.Maybe(self.getView().byId("idDetail"))
-                                .obind('bindElement', {path:path, model:"persons"})
-                                .bind(function(){
-                                  F.Maybe(self).obind('getView').obind('byId',"idDetail")
-                                               .bind( function(detailView) {
-                                                  F.Maybe(self.byId("app"))
-                                                      .obind('toDetail', detailView, 'slide' )
-                                                      .bind(function() {
-                                                        var obj = context.getObject();
-                                                        self._toViewMode(self._hasActiveRequest(obj));
-                                                      });
-                                               });
-                                });
+                            if( !hasActiveRequest ) {
+                              self._showView(path, obj,"idDetail");
+                            } else {
+                              self._showView(path, obj, "idNewContractPage");
+                            }
                         });
                   }).onNothing(function() { jQuery.sap.log.error("failed to show selected element", evt);});
     },
@@ -127,7 +132,7 @@ function(Controller,formatter) {
     },
     _toEditMode : function() {
       this._allButtonsInvisible();
-      this._visibleById(true,["idSave", "idCancel", "idFormRequestEdit", "idFormRequestOptionsEdit"]);
+      this._visibleById(true,["idSave", "idCancel", "idFormRequestEdit", "idFormRequestOptionsEdit", "idNewContractPress", "idDeclineContractPress"]);
     },
     _toViewMode : function(fRequest) {
       this._allButtonsInvisible();
@@ -141,6 +146,9 @@ function(Controller,formatter) {
       this._visibleById(false,["idFormRequestEdit", "idFormRequestOptionsEdit"]);
       this._visibleById(false,["idFormRequest", "idFormRequestOptions"]);
       this._visibleById(true,["idNew"]);
+    },
+    _getSplitAppObject : function() {
+      return this.byId("app");
     },
     onNewPress : function(evt) {
       var self = this;
@@ -206,6 +214,23 @@ function(Controller,formatter) {
       //console.log("onCancelPress")
       this._allButtonsInvisible();
       this._toViewMode(false);// refrehs is asnc
+    },
+    onNewContractPress : function(evt) {
+      console.log("onNewContractPress");
+//      this.byId("app").to(this.createId("idDetail"));
+      var self = this;
+      F.Maybe(evt.getSource().getBindingContext("persons"))
+        .bind(function(context) {
+          F.Maybe(context.getPath())
+          .bind(function(path){
+              var obj = context.getObject();
+              console.log("hello", path, obj);
+              self._showView(path, obj,"idNewContractPage");
+          });
+        });
+    },
+    onDeclineContractPress : function(evt) {
+      console.log("onDeclineContractPress");
     },
     onChangeX : function(evt) {
       console.log("onChangeX", evt);

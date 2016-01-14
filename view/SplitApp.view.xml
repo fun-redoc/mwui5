@@ -28,8 +28,41 @@
 		</masterPages>
 			<detailPages>
   			<Page id="idInitial" title="{i18n>initialPageTitle}" >
+        </Page>
+        <Page id="idDetail" title="{persons>completeName} {persons>mobileWork/status}" >
+            <content>
+              <HBox class="sapUiResponsiveMargin">
+                  <core:Icon id="idNewContractPress" 
+                    visible="{= ${persons>mobileWork/status} === 'none' || ${persons>mobileWork/status} === '' }"
+                    tooltip="{i18n>newContract}"
+                    aria-label="{i18n>newContract}"
+                    src="sap-icon://activity-individual" 
+                    class="launchPadIcon sapUiResponsiveMargin sapUiResponsiveContentPadding" 
+                    hoverBackgroundColor="#E3E3E3"
+                    activeBackgroundColor="#F6F6F6"
+                    press="onNewContractPress" >
+                    <core:layoutData>
+                      <FlexItemData growFactor="1" />
+                    </core:layoutData>
+                  </core:Icon>
+                  <core:Icon id="idDeclineContractPress" 
+                    visible="{= ${persons>mobileWork/status} === 'none' || ${persons>mobileWork/status} === '' }"
+                    tooltip="{i18n>declineContract}"
+                    aria-label="{i18n>declineContract}"
+                    src="sap-icon://decline" 
+                    class="launchPadIcon sapUiResponsiveMargin sapUiResponsiveContentPadding" 
+                    hoverBackgroundColor="#E3E3E3"
+                    activeBackgroundColor="#F6F6F6"
+                    press="onDeclineContractPress" >
+                    <core:layoutData>
+                      <FlexItemData growFactor="1" />
+                    </core:layoutData>
+                  </core:Icon>
+              </HBox>
+            </content>
   			</Page>
-  			<Page id="idDetail" title="{i18n>detailPageTitle}" >
+        <!-- <Page id="idNewContractPage" title="{i18n>detailPageTitle} {persons>completeName}" > -->
+        <Page id="idNewContractPage" title="{persons>completeName}" >
   			  <footer>
       			<Bar>
       				<contentRight>

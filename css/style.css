@@ -1,11 +1,7 @@
-.myAppDemoWT .myCustomButton.sapMBtn {
-  margin-right: 0.125rem
+.launchPadIcon {
+    font-size : 10rem;
 }
-
-html[dir="rtl"] .myAppDemoWT .myCustomButton.sapMBtn {
-  margin-left: 0.125rem;
-  margin-right: 0 
-}
-.myAppDemoWT .myCustomText {
-  font-weight: bold;
+@media (max-width:599px) {
+  .launchPadIcon {
+    font-size : 5rem;
 }
