@@ -39,7 +39,7 @@ function(Controller,formatter) {
     },
     onPrintOptionsPress: function(evt) {
       var self = this;
-      F.Maybe(this.byId("idDetail"))
+      F.Maybe(this.byId("idNewContractPage"))
           .obind('getBindingContext', "persons")
           .bind(function(context){
             var model = context.getModel();

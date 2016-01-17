@@ -1,17 +1,31 @@
-
-
 sap.ui.define(["sap/ui/core/Control"], 
   function(Control) {
     "use strict";
     return Control.extend("rsh.control.DayOption", {
 
-      typeHours : sap.ui.model.type.String.extend("rsh.control.TypeHours", { formatValue: function (oValue) {
-          console.log("formatValueX");
-          return oValue;
+      typeHours : sap.ui.model.type.String.extend("rsh.control.TypeHours", { 
+        formatValue: function (oValue) {
+          console.log("formatValue TypeHours");
+          var hh = "";
+          var mm = "";
+          var res = "";
+          if( !(oValue === null || oValue === undefined) && jQuery.isNumeric(oValue) ) {
+            if( oValue > 0 ){
+              var day = 24*60;
+              var time = parseInt(oValue*60) % day;
+              var imm = time % 60;
+              var ihh = parseInt(time / 60);
+              mm = imm.toString();
+              if( mm.length === 1) { mm = "0"+mm;}
+              hh = ihh.toString();
+              res = hh + ":"  + mm;
+            }
+          }
+          return res;
         },
         parseValue: function (oValue) {
           console.log("parseValue");
-          //parsing step takes place before validating step, value can be altered
+          //parsing step takes place before validating step, value can be alteredi
           return oValue;
         },
         validateValue: function (oValue) {
@@ -19,9 +33,9 @@ sap.ui.define(["sap/ui/core/Control"],
           // The following Regex is NOT a completely correct one and only used for demonstration purposes.
           // RFC 5322 cannot even checked by a Regex and the Regex for RFC 822 is very long and complex.
           //var mailregex = /^\w+[\w-+\.]*\@\w+([-\.]\w+)*\.[a-zA-Z]{2,}$/;
-          var hourRegEx = /^[0-4]?[0-9](\.[0-6]?[0-9]?)$/;
-          if (!oValue.match(mailregex)) {
-            throw new sap.ui.model.SimpleTypeValidateException("'" + oValue + "' is not a valid email address");
+          var hourRegEx = /^[0-1]?[0-9](\:[0-6]?[0-9]?)$/;
+          if (!oValue.match(hourRegEx)) {
+            throw new sap.ui.model.SimpleTypeValidateException("'" + oValue + "' is not a valid ");
           }
         }
       }),
@@ -36,11 +50,24 @@ sap.ui.define(["sap/ui/core/Control"],
       },
       metadata : {
                     properties : { day     : {type:"string"},
-                                    options : {type:"object", defaultValue:{ available:false, completeDay:false, deviantHours:"" }}
+                                    available : {type:"boolean", defaultValue:false},
+                                    hours     : {type:"rsh.control.TypeHours", defaultValue:""},
+                                    complete  : {type:"boolean", defaultValue:false},
+                                    editable : {type:"boolean", defaultValue:false},
+//                                    options : {type:"object"} // properties can not be structures
                                   },
                     aggregations: { _contentPane: {typa:"sap.ui.layout.Grid", multiple:false, visibility:"hidden"}},
-                                events      : {change : {parameters: {value : {type : "object"}}}}
+                    events      : {change : {parameters: {value : {type : "object"}}}}
                  },
+      setHours : function(val) {
+          var hours = new this.typeHours();
+          this.setProperty("hours", hours.formatValue(val));
+      },
+      getHours : function() {
+        var hours = this.getProperty("hours");
+        var arr = hours.split(":");
+        return parseInt(arr[0]) + Math.round(parseInt(arr[1])*100/60)/100;
+      },
       init     : function() {
 
                     this._states = {
@@ -61,7 +88,7 @@ sap.ui.define(["sap/ui/core/Control"],
                                         }).addStyleClass("sapUiSmallMarginTop").addStyleClass("sapUiSmallMarginBottom"),
                                         new sap.m.CheckBox(this.getId()+"-idAvailable",{
                                           text:"",
-                                          selected:this.getOptions().available,
+                                          //selected:this.getOptions().available,
                                           select:this._onSelectDayAvailable.bind(this),
                                           layoutData:[ new sap.ui.layout.GridData({span:"L1 M1 S7"})]
                                         }),
@@ -70,7 +97,8 @@ sap.ui.define(["sap/ui/core/Control"],
                                           layoutData:[ new sap.ui.layout.GridData({span:"L2 M2 S5", linebreakS:true, indentS:2})]
                                         }).addStyleClass("sapUiSmallMarginTop").addStyleClass("sapUiSmallMarginBottom"),
                                         new sap.m.Input(this.getId()+"-idDeviantHours",{
-                                          value:this.getOptions().deviantHours,
+                                          //value:this.getOptions().deviantHours,
+                                          valueStateText:"{i18n>invalidHoursFormat}",
                                           enabled:false,
                                           change:this._onChange.bind(this),
                                           liveChange:this._onLiveChange.bind(this),
@@ -80,7 +108,7 @@ sap.ui.define(["sap/ui/core/Control"],
                                         new sap.m.CheckBox(this.getId()+"-idCompleteDay", {
                                           text:"{i18n>completeDay}",
                                           enabled:false,
-                                          selected:this.getOptions().completeDay,
+                                          //selected:this.getOptions().completeDay,
                                           select:this._onSelectCompleteDay.bind(this),
                                           layoutData:[ new sap.ui.layout.GridData({span:"L3 M3 S10", linebreakS:true, indentS:2})]
                                         })
@@ -90,11 +118,24 @@ sap.ui.define(["sap/ui/core/Control"],
                     this._states.initial();
                     console.log("language", sap.ui.getCore().getConfiguration().getLanguage());
                  },
-      getDay:function() { var day = this.getProperty("day"); console.log("in getDay", day); return day; },
+      _setViewValues : function(control) {
+        var self = control;
+        F.Maybe(sap.ui.getCore().byId(self.getId()+"-idDay"))
+          .bind(function(label) { label.setText(self.getDay()); });
+        F.Maybe(sap.ui.getCore().byId(self.getId()+"-idAvailable"))
+          .bind(function(checkBox) { checkBox.setSelected(self.getAvailable()); });
+        F.Maybe(sap.ui.getCore().byId(self.getId()+"-idDeviantHours"))
+          .bind(function(input) { input.setValue(self.getProperty("hours")); });
+          //.bind(function(input) { input.setValue(self.getHours()); });
+        F.Maybe(sap.ui.getCore().byId(self.getId()+"-idCompleteDay"))
+          .bind(function(checkBox) { checkBox.setSelected(self.getComplete()); });
+      },
       renderer : function(renderManager, control) {
-                    //console.log("day", control.getDay(), "day", sap.ui.getCore().byId(control.getId()+"-idDay"));
-                    F.Maybe(sap.ui.getCore().byId(control.getId()+"-idDay"))
-                      .bind(function(label) { label.setText(control.getDay()); });
+                   console.log("render", control);
+                   control._setViewValues(control);
+                    F.Maybe(control.getAggregation("_contentPane"))
+                        .obind('getContent')
+                        .obind('map', function(innerControl) {if(innerControl.setEditable) {innerControl.setEditable(control.getEditable());}});
                     renderManager.write("<div");
                     renderManager.writeControlData(control);
                     //renderManager.addClass("myCSSClass");
@@ -114,9 +155,10 @@ sap.ui.define(["sap/ui/core/Control"],
               .obind('getValue')
               .bind(function(value) {
                 if(value.length > 0 ) { self._states.hours(); } else { self._states.available(); }
-                var regex  = /^[0-1]?[0-9]?(\.[0-9]?[0-9]?|$)$/;
+//                var regex  = /^[0-1]?[0-9]?(\.[0-9]?[0-9]?|$)$/;
+                var regex  = /^(([0-9]?|10)(:[0-9]{2}))?$/;
                 if (!value.match(regex)) {
-                  //throw new sap.ui.model.SimpleTypeValidateException("'" + oValue + "' is not a valid email address");
+                  //throw new sap.ui.model.SimpleTypeValidateException("'" + oValue + "' is not valid.");
                   source.setValueState(sap.ui.core.ValueState.Error);
                 } else {
                   source.setValueState(sap.ui.core.ValueState.None);

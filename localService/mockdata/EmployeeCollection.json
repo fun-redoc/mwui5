@@ -28,9 +28,9 @@
                 "__metadata" : {
                   "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
                 },
-                "available" : "",
+                "available" : "X",
                 "dayNumber" : 0,
-                "completeDay" : "",
+                "completeDay" : "X",
                 "deviantHours" : "0.00"
               },
               "day2" : {
@@ -125,19 +125,19 @@
                 "__metadata" : {
                   "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
                 },
-                "available" : "",
+                "available" : "X",
                 "dayNumber" : 0,
                 "completeDay" : "",
-                "deviantHours" : "0.00"
+                "deviantHours" : "4.12"
               },
               "day2" : {
                 "__metadata" : {
                   "type" : "009_MSS_MOBILE_WORK_APP.DailyHours"
                 },
-                "available" : "",
+                "available" : "X",
                 "dayNumber" : 0,
                 "completeDay" : "",
-                "deviantHours" : "0.00"
+                "deviantHours" : "1.25"
               },
               "day3" : {
                 "__metadata" : {

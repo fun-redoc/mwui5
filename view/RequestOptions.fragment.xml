@@ -10,42 +10,64 @@
 			<f:FormElement label="{i18n>singleDays}">
 				<f:fields>
           <VBox>
-          <rsh:DayOption day="{i18n>monday}" option="{persons>mobileWork/options/agreementWorkdays/day1" change="onChangeDayOption"/>
-          <rsh:DayOption day="{i18n>tuesday}" option="{persons>mobileWork/options/agreementWorkdays/day2" change="onChangeDayOption"/>
-          <rsh:DayOption day="{i18n>wednesday}" option="{persons>mobileWork/options/agreementWorkdays/day3" change="onChangeDayOption"/>
-          <rsh:DayOption day="{i18n>thursday}" option="{persons>mobileWork/options/agreementWorkdays/day4" change="onChangeDayOption"/>
-          <rsh:DayOption day="{i18n>friday}" option="{persons>mobileWork/options/agreementWorkdays/day5" change="onChangeDayOption"/>
+            <rsh:DayOption day="{i18n>monday}"    change="onChangeDayOption" editable="true"
+              available= "{= ${persons>mobileWork/options/agreementWorkdays/day1/available} === 'X'}"
+              hours    = "{persons>mobileWork/options/agreementWorkdays/day1/deviantHours}"
+              complete = "{= ${persons>mobileWork/options/agreementWorkdays/day1/completeDay} === 'X'}" />
+            <rsh:DayOption day="{i18n>tuesday}"    change="onChangeDayOption" editable="true"
+              available= "{= ${persons>mobileWork/options/agreementWorkdays/day2/available} === 'X'}"
+              hours    = "{persons>mobileWork/options/agreementWorkdays/day2/deviantHours}"
+              complete = "{= ${persons>mobileWork/options/agreementWorkdays/day2/completeDay} === 'X'}" />
+            <rsh:DayOption day="{i18n>wednesday}"    change="onChangeDayOption" editable="true"
+              available= "{= ${persons>mobileWork/options/agreementWorkdays/day3/available} === 'X'}"
+              hours    = "{persons>mobileWork/options/agreementWorkdays/day3/deviantHours}"
+              complete = "{= ${persons>mobileWork/options/agreementWorkdays/day3/completeDay} === 'X'}" />
+            <rsh:DayOption day="{i18n>thursday}"    change="onChangeDayOption" editable="true"
+              available= "{= ${persons>mobileWork/options/agreementWorkdays/day4/available} === 'X'}"
+              hours    = "{persons>mobileWork/options/agreementWorkdays/day4/deviantHours}"
+              complete = "{= ${persons>mobileWork/options/agreementWorkdays/day4/completeDay} === 'X'}" />
+            <rsh:DayOption day="{i18n>friday}"    change="onChangeDayOption" editable="true"
+              available= "{= ${persons>mobileWork/options/agreementWorkdays/day5/available} === 'X'}"
+              hours    = "{persons>mobileWork/options/agreementWorkdays/day5/deviantHours}"
+              complete = "{= ${persons>mobileWork/options/agreementWorkdays/day5/completeDay} === 'X'}" />
         </VBox>
         </f:fields>
       </f:FormElement>
 			<f:FormElement label="{i18n>additionalText}">
 				<f:fields>
-					<Text text="{persons>mobileWork/options/text}" />
-				</f:fields>
-			</f:FormElement>
-			<f:FormElement label="{i18n>confirmationOfOptions}">
-				<f:fields>
-					<CheckBox id="idOptionsConfirmed" selected="false" text="{i18n>pleaseConfirmOptions}" change="onChangeX" />
+					<CheckBox id="idOptionsTextCheckBox1" selected="false" text="{i18n>pleaseConfirmOptions}" change="onChangeX" />
+					<Text id="idOptionsText1" text="{persons>mobileWork/options/text}" change="onChangeX"/>
 				</f:fields>
 			</f:FormElement>
 		</f:formElements>
 	</f:FormContainer>
 	<f:FormContainer id="idFormRequestOptions" visible="false" title="{i18n>contractOptionis}">
 		<f:formElements>
-			<f:FormElement label="{i18n>lastName}">
+			<f:FormElement label="{i18n>singleDays}">
 				<f:fields>
-					<Text text="{persons>lastName}" />
-				</f:fields>
-			</f:FormElement>
-			<f:FormElement label="{i18n>firstName}">
-				<f:fields>
-					<Text text="{persons>firstName}" />
-				</f:fields>
-			</f:FormElement>
-			<f:FormElement label="{i18n>pernr}">
-				<f:fields>
-					<Text text="{persons>pernr}" />
-				</f:fields>
+          <VBox>
+            <rsh:DayOption day="{i18n>monday}"    change="onChangeDayOption" 
+              available= "{= ${persons>mobileWork/options/agreementWorkdays/day1/available} === 'X'}"
+              hours    = "{persons>mobileWork/options/agreementWorkdays/day1/deviantHours}"
+              complete = "{= ${persons>mobileWork/options/agreementWorkdays/day1/completeDay} === 'X'}" />
+            <rsh:DayOption day="{i18n>tuesday}"    change="onChangeDayOption" 
+              available= "{= ${persons>mobileWork/options/agreementWorkdays/day2/available} === 'X'}"
+              hours    = "{persons>mobileWork/options/agreementWorkdays/day2/deviantHours}"
+              complete = "{= ${persons>mobileWork/options/agreementWorkdays/day2/completeDay} === 'X'}" />
+            <rsh:DayOption day="{i18n>wednesday}"    change="onChangeDayOption" 
+              available= "{= ${persons>mobileWork/options/agreementWorkdays/day3/available} === 'X'}"
+              hours    = "{persons>mobileWork/options/agreementWorkdays/day3/deviantHours}"
+              complete = "{= ${persons>mobileWork/options/agreementWorkdays/day3/completeDay} === 'X'}" />
+            <rsh:DayOption day="{i18n>thursday}"    change="onChangeDayOption" 
+              available= "{= ${persons>mobileWork/options/agreementWorkdays/day4/available} === 'X'}"
+              hours    = "{persons>mobileWork/options/agreementWorkdays/day4/deviantHours}"
+              complete = "{= ${persons>mobileWork/options/agreementWorkdays/day4/completeDay} === 'X'}" />
+            <rsh:DayOption day="{i18n>friday}"    change="onChangeDayOption" 
+              available= "{= ${persons>mobileWork/options/agreementWorkdays/day5/available} === 'X'}"
+              hours    = "{persons>mobileWork/options/agreementWorkdays/day5/deviantHours}"
+              complete = "{= ${persons>mobileWork/options/agreementWorkdays/day5/completeDay} === 'X'}" />
+          </VBox>
+        </f:fields>
 			</f:FormElement>
 		</f:formElements>
 	</f:FormContainer>
