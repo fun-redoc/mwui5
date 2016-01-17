@@ -1,6 +1,8 @@
 sap.ui.define(
-["sap/ui/core/mvc/Controller","rsh/model/formatter"], 
-function(Controller,formatter) {
+["sap/ui/core/mvc/Controller",
+ "sap/ui/model/json/JSONModel",
+ "rsh/model/formatter"], 
+function(Controller,JSONModel, formatter) {
   "use strict";
   return Controller.extend("rsh.view.SplitApp", {
     formatter : formatter,
@@ -9,7 +11,11 @@ function(Controller,formatter) {
       var res = (val === null || val === undefined || val === '' || val === 'none');
       return !res;
     },
+    _viewElementsState : new JSONModel({
+      optionsEditable : false
+    }),
     onInit : function() {
+      this.getView().setModel(this._viewElementsState, "viewState");
 //      this.getView().setModel(testModel, "testModel")
 // Register the view with the message manager
 			//sap.ui.getCore().getMessageManager().registerObject(this.getView(), true);
@@ -64,12 +70,10 @@ function(Controller,formatter) {
                 });
     },
     itemSelected : function(evt) {
-//    var path = evt.getSource().getSelectedItem().getBindingContext("persons").getPath()
       var self = this;
       F.Maybe(evt).obind('getSource').onNothing(function() {jQuery.sap.log.error("getSource failed");})
                   .obind('getSelectedItem')
                   .obind('getBindingContext',"persons")
-                  //.obind('getPath')
                   .bind(function(context) {
                     var obj = context.getObject();
                     var hasActiveRequest = self._hasActiveRequest(obj);
@@ -133,19 +137,21 @@ function(Controller,formatter) {
     _toEditMode : function() {
       this._allButtonsInvisible();
       this._visibleById(true,["idSave", "idCancel", "idFormRequestEdit", "idFormRequestOptionsEdit", "idNewContractPress", "idDeclineContractPress"]);
+      this._viewElementsState.setProperty("/optionsEditable",true, this.getView(), true);
     },
     _toViewMode : function(fRequest) {
       this._allButtonsInvisible();
-      this._visibleById(false,["idFormRequestEdit", "idFormRequestOptionsEdit"]);
+      this._visibleById(false,["idFormRequestEdit"]);
       this._visibleById(!fRequest,["idNew"]);
       this._visibleById(fRequest,["idFormRequest"]);
-      this._visibleById(fRequest,["idFormRequestOptions"]);
+      this._viewElementsState.setProperty("/optionsEditable",false, this.getView(), true);
     },
     _toNoneMode : function() {
       this._allButtonsInvisible();
       this._visibleById(false,["idFormRequestEdit", "idFormRequestOptionsEdit"]);
-      this._visibleById(false,["idFormRequest", "idFormRequestOptions"]);
+      this._visibleById(false,["idFormRequest"]);
       this._visibleById(true,["idNew"]);
+      this._viewElementsState.setProperty("/optionsEditable",false, this.getView(), true);
     },
     _getSplitAppObject : function() {
       return this.byId("app");
@@ -171,11 +177,28 @@ function(Controller,formatter) {
       this.byId("idEndDate").setDateValue(obj.mobileWork.endDate);
       this.byId("idWorkHoursPerWeek").setValue(obj.mobileWork.workHoursPerWeek);
     },
+    _setOpbjectValuesFromEditViewForOptions : function(oDay, dayId) {
+      var dayOptionsControl = this.byId(dayId);
+      oDay.available    = dayOptionsControl.getAvailable();
+      oDay.deviantHours = dayOptionsControl.getHours();
+      oDay.completeDay  = dayOptionsControl.getComplete();
+      return oDay;
+    },
     _setObjectValuesFromEditView : function(origObj) {
       var obj = this._deepCopy(origObj);
+      // contract
       obj.mobileWork.beginDate = this.byId("idBeginDate").getDateValue();
       obj.mobileWork.endDate = this.byId("idEndDate").getDateValue();
       obj.mobileWork.workHoursPerWeek = this.byId("idWorkHoursPerWeek").getValue();
+
+      // options
+      var options = obj.mobileWork.options;
+      this._setOpbjectValuesFromEditViewForOptions(options.agreementWorkdays.day1, "day1");
+      this._setOpbjectValuesFromEditViewForOptions(options.agreementWorkdays.day2, "day2");
+      this._setOpbjectValuesFromEditViewForOptions(options.agreementWorkdays.day3, "day3");
+      this._setOpbjectValuesFromEditViewForOptions(options.agreementWorkdays.day4, "day4");
+      this._setOpbjectValuesFromEditViewForOptions(options.agreementWorkdays.day5, "day5");
+
       return obj;
     },
     _successCallback : function() { console.log("success");},
@@ -189,7 +212,7 @@ function(Controller,formatter) {
       if(stillHasError) return;
 
       var self = this;
-      F.Maybe(this.byId("idDetail"))
+      F.Maybe(this.byId("idNewContractPage"))
           .obind('getBindingContext', "persons")
           .bind(function(context){
             var model = context.getModel();
@@ -245,6 +268,14 @@ function(Controller,formatter) {
           //do validation
           evt.bCancelBubble = true; //stop bubbling to the parent control
       }
+    },
+    onValidationError : function(evt) {
+      // TODO disable save and pront button
+      console.log("onValidationError", evt);
+    },
+    onValidationSuccess : function(evt) {
+      // TODO disable save and pront button
+      console.log("onValidationSuccess", evt);
     },
     
     

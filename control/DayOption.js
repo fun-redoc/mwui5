@@ -57,7 +57,7 @@ sap.ui.define(["sap/ui/core/Control"],
 //                                    options : {type:"object"} // properties can not be structures
                                   },
                     aggregations: { _contentPane: {typa:"sap.ui.layout.Grid", multiple:false, visibility:"hidden"}},
-                    events      : {change : {parameters: {value : {type : "object"}}}}
+                    events      : {change : {parameters: {source : {type : "rsh.control.DayOption"}}}}
                  },
       setHours : function(val) {
           var hours = new this.typeHours();
@@ -70,13 +70,14 @@ sap.ui.define(["sap/ui/core/Control"],
       },
       init     : function() {
 
+                    // view states functions construct, definition in the control template above
                     this._states = {
                       initial : this._setViewState.bind(this, false, false),
                       available : this._setViewState.bind(this, true, true),
                       completeDay : this._setViewState.bind(this, false, true),
                       hours: this._setViewState.bind(this, true, false)
                     };
-                    
+
                     var grid = new sap.ui.layout.Grid({
                                      defaultSpan:"L12 M12 S12",
                                      width:"auto",
@@ -144,6 +145,10 @@ sap.ui.define(["sap/ui/core/Control"],
                     renderManager.renderControl(control.getAggregation("_contentPane"));
                     renderManager.write("</div>");
                  },
+      _checkHoursInput : function(value) {
+          var regex  = /^(([0-9]?|10)(:[0-9]{2}))?$/;
+          return value.match(regex);
+      },
       _onLiveChange : function(evt) {
         var self = this;
         console.log("_onLiveChange");
@@ -155,13 +160,13 @@ sap.ui.define(["sap/ui/core/Control"],
               .obind('getValue')
               .bind(function(value) {
                 if(value.length > 0 ) { self._states.hours(); } else { self._states.available(); }
-//                var regex  = /^[0-1]?[0-9]?(\.[0-9]?[0-9]?|$)$/;
-                var regex  = /^(([0-9]?|10)(:[0-9]{2}))?$/;
-                if (!value.match(regex)) {
+                if (!self._checkHoursInput(value)) {
                   //throw new sap.ui.model.SimpleTypeValidateException("'" + oValue + "' is not valid.");
                   source.setValueState(sap.ui.core.ValueState.Error);
+                  self.fireValidationError(); //TODO method has optional parameters which help the receiver to determin the problem
                 } else {
                   source.setValueState(sap.ui.core.ValueState.None);
+                  self.fireValidationSuccess();
                 }
               });
           });
@@ -175,6 +180,8 @@ sap.ui.define(["sap/ui/core/Control"],
           .bind(function(isSelected) {
             console.log(isSelected);
             if(isSelected) { self._states.completeDay(); } else { self._states.available(); }
+            self.setProperty("complete", isSelected);
+            self.fireChange(self);
           });
       },
     _onSelectDayAvailable : function(evt) {
@@ -185,17 +192,33 @@ sap.ui.define(["sap/ui/core/Control"],
         .obind('getSelected')
         .bind(function(isSelected) {
           if(isSelected) { self._states.available();} else { self._states.initial(); }
+          self.setProperty("available", isSelected);
+          self.fireChange(self);
         });
     },
-    _onSelect : function(evt) {
-      console.log("_onSelect", evt.getSource());
-    },
-      _onChange: function(evt) {
-        // TODO check it value is in the given range 
+    _onChange: function(evt) {
         // TODO switch to next .25 mintes
-        //evt.getSource().setValueState(sap.ui.core.ValueState.Error);
-        //evt.cancelBubble();
-        //evt.preventDefault();
+        var self = this;
+        F.Maybe(evt)
+          .obind('getSource')
+          .bind(function(source) {
+            F.Maybe(source)
+              .obind('getParameters')
+              .obind('getValue')
+              .bind(function(value) {
+                if (!self._checkHoursInput(value)) {
+                  source.setValueState(sap.ui.core.ValueState.Error);
+                  self.fireValidationError(); //TODO method has optional parameters which help the receiver to determin the problem
+                } else {
+                  source.setValueState(sap.ui.core.ValueState.None);
+                  self.setProperty("hours", value);
+                  self.fireValidationSuccess();
+                  self.fireChange(self);
+                }
+              });
+          });
+        evt.cancelBubble();
+        evt.preventDefault();
      }
     });
   }

@@ -5,28 +5,29 @@
   xmlns:core="sap.ui.core"
   xmlns:commons="sap.ui.commons"
   xmlns:rsh="rsh.control">
-	<f:FormContainer id="idFormRequestOptionsEdit" visible="false" title="{i18n>contractOptionis}" expandable="true" expanded="true">
+  <f:FormContainer id="idFormRequestOptionsEdit" visible="true" title="{viewState>/optionsEditable} -- {i18n>contractOptionis}" expandable="true" expanded="true">
 		<f:formElements>
 			<f:FormElement label="{i18n>singleDays}">
 				<f:fields>
           <VBox>
-            <rsh:DayOption day="{i18n>monday}"    change="onChangeDayOption" editable="true"
+            <rsh:DayOption id="day1" day="{i18n>monday}" editable="{viewState>/optionsEditable}" 
+              change="onChangeDayOption" validationError="onValidationError" validationSuccess="onValidationSuccess"
               available= "{= ${persons>mobileWork/options/agreementWorkdays/day1/available} === 'X'}"
               hours    = "{persons>mobileWork/options/agreementWorkdays/day1/deviantHours}"
               complete = "{= ${persons>mobileWork/options/agreementWorkdays/day1/completeDay} === 'X'}" />
-            <rsh:DayOption day="{i18n>tuesday}"    change="onChangeDayOption" editable="true"
+            <rsh:DayOption id="day2" day="{i18n>tuesday}" change="onChangeDayOption"      editable="{viewState>/optionsEditable}"
               available= "{= ${persons>mobileWork/options/agreementWorkdays/day2/available} === 'X'}"
               hours    = "{persons>mobileWork/options/agreementWorkdays/day2/deviantHours}"
               complete = "{= ${persons>mobileWork/options/agreementWorkdays/day2/completeDay} === 'X'}" />
-            <rsh:DayOption day="{i18n>wednesday}"    change="onChangeDayOption" editable="true"
+            <rsh:DayOption id="day3" day="{i18n>wednesday}"       editable="{viewState>/optionsEditable}" change="onChangeDayOption"
               available= "{= ${persons>mobileWork/options/agreementWorkdays/day3/available} === 'X'}"
               hours    = "{persons>mobileWork/options/agreementWorkdays/day3/deviantHours}"
               complete = "{= ${persons>mobileWork/options/agreementWorkdays/day3/completeDay} === 'X'}" />
-            <rsh:DayOption day="{i18n>thursday}"    change="onChangeDayOption" editable="true"
+            <rsh:DayOption id="day4" day="{i18n>thursday}"      editable="{viewState>/optionsEditable}" change="onChangeDayOption"
               available= "{= ${persons>mobileWork/options/agreementWorkdays/day4/available} === 'X'}"
               hours    = "{persons>mobileWork/options/agreementWorkdays/day4/deviantHours}"
               complete = "{= ${persons>mobileWork/options/agreementWorkdays/day4/completeDay} === 'X'}" />
-            <rsh:DayOption day="{i18n>friday}"    change="onChangeDayOption" editable="true"
+            <rsh:DayOption id="day5" day="{i18n>friday}" editable="{viewState>/optionsEditable}" change="onChangeDayOption"
               available= "{= ${persons>mobileWork/options/agreementWorkdays/day5/available} === 'X'}"
               hours    = "{persons>mobileWork/options/agreementWorkdays/day5/deviantHours}"
               complete = "{= ${persons>mobileWork/options/agreementWorkdays/day5/completeDay} === 'X'}" />
@@ -41,6 +42,7 @@
 			</f:FormElement>
 		</f:formElements>
 	</f:FormContainer>
+<!--
 	<f:FormContainer id="idFormRequestOptions" visible="false" title="{i18n>contractOptionis}">
 		<f:formElements>
 			<f:FormElement label="{i18n>singleDays}">
@@ -71,4 +73,5 @@
 			</f:FormElement>
 		</f:formElements>
 	</f:FormContainer>
+-->
 </core:FragmentDefinition>
