@@ -177,11 +177,14 @@ function(Controller,JSONModel, formatter) {
       this.byId("idEndDate").setDateValue(obj.mobileWork.endDate);
       this.byId("idWorkHoursPerWeek").setValue(obj.mobileWork.workHoursPerWeek);
     },
+    _toABAPBool : function(bool) {
+       return bool ? "X" : "";
+    },
     _setOpbjectValuesFromEditViewForOptions : function(oDay, dayId) {
       var dayOptionsControl = this.byId(dayId);
-      oDay.available    = dayOptionsControl.getAvailable();
+      oDay.available    = this._toABAPBool(dayOptionsControl.getAvailable());
       oDay.deviantHours = dayOptionsControl.getHours();
-      oDay.completeDay  = dayOptionsControl.getComplete();
+      oDay.completeDay  = this._toABAPBool(dayOptionsControl.getComplete());
       return oDay;
     },
     _setObjectValuesFromEditView : function(origObj) {
