@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "express": "^3.4.8",
-    "grunt": "~0.4.2",
+    "grunt": ">=1.3.0",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-express-server": "~0.4.11",
     "grunt-open": "~0.2.3",
